@@ -1,7 +1,6 @@
 package com.sistema_academia.academia.services;
 
 import java.util.List;
-import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -49,9 +48,8 @@ public class ClienteServico {
         return enderecoRepository.save(endereco);
     }
 
-    public Optional<EnderecoCliente> getEnderecos(Long id){
-
-        return enderecoRepository.findById(id);
+    public List<EnderecoCliente> getEnderecos(Long id){
+        return enderecoRepository.findByCliente(findById(id));
     }
 
 

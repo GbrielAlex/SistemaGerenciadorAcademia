@@ -45,6 +45,6 @@ public class Instrutor {
 
     @NotNull
     @OneToMany(mappedBy = "instrutor")
-    private List<Endereco> enderecos;
+    private List<EnderecoInstrutor> enderecos;
 
 }

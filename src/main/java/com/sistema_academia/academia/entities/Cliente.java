@@ -1,17 +1,18 @@
 package com.sistema_academia.academia.entities;
 
 import java.time.LocalDate;
-import java.util.List;
 
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
 
 import lombok.Getter;
 import lombok.Setter;
@@ -29,6 +30,11 @@ public class Cliente {
     @NotBlank
     @NotNull
     private String nome;
+    
+    @NotBlank
+    @NotNull
+    @Column(unique = true)
+    private String cpf;
 
     @NotBlank
     @NotNull
@@ -45,11 +51,4 @@ public class Cliente {
     @OneToOne
     private Plano plano;
     
-    @OneToMany(mappedBy = "cliente")
-    private List<Exercicio> treinos;
-
-    @OneToMany(mappedBy = "cliente")
-    private List<Endereco> enderecos;
-
-
 }

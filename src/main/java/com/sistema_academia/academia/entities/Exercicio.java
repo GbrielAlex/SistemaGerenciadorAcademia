@@ -26,14 +26,19 @@ public class Exercicio {
     @JoinColumn(name = "maquina_id")
     private Maquina maquina;
 
+    @NotNull
     @ManyToOne
-    @JoinColumn(name = "Treino_id")
-    private Treino treino;
-
-    @ManyToOne
-    @JoinColumn(name = "cliente_id")
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
-    
+
+    @NotNull
+    @ManyToOne
+    @JoinColumn(name = "id_instrutor")
+    private Instrutor instrutor;
+
+    @NotNull
+    private String diaSemana;
+
     @NotNull
     private int num_repeticoes;
 

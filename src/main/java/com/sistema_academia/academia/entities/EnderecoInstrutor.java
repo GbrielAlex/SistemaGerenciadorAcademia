@@ -1,5 +1,4 @@
 package com.sistema_academia.academia.entities;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -15,8 +14,8 @@ import lombok.Setter;
 @Setter
 @Getter
 @Entity
-@Table(name = "tb_endereco")
-public class Endereco {
+@Table(name = "tb_endereco_instrutor")
+public class EnderecoInstrutor {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -39,15 +38,11 @@ public class Endereco {
 
     @NotNull
     @ManyToOne
-    @JoinColumn(name = "cliente_id")
-    private Cliente cliente;
-
-    @NotNull
-    @ManyToOne
     @JoinColumn(name = "instrutor_id")
     private Instrutor instrutor;
 
-    public Endereco() {
+    public EnderecoInstrutor() {
     }
+
 
 }

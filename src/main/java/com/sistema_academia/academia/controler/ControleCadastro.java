@@ -15,6 +15,7 @@ import com.sistema_academia.academia.entities.EnderecoCliente;
 import com.sistema_academia.academia.entities.EnderecoInstrutor;
 import com.sistema_academia.academia.entities.Exercicio;
 import com.sistema_academia.academia.entities.Maquina;
+import com.sistema_academia.academia.entities.Plano;
 import com.sistema_academia.academia.services.ClienteServico;
 import com.sistema_academia.academia.services.InstrutorServico;
 import com.sistema_academia.academia.services.MaquinaServico;
@@ -61,5 +62,10 @@ public class ControleCadastro {
         return instrutorServico.cadastrarEndereco(enderecoInstrutor);
     }
     
+    @PostMapping("/plano")
+    public Plano cadastrarPlano(Plano plano){
+        return clienteServico.cadastrarPlano(plano);
+    }
+
 
 }

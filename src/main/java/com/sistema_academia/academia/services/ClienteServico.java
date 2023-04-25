@@ -7,9 +7,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import com.sistema_academia.academia.entities.Cliente;
 import com.sistema_academia.academia.entities.EnderecoCliente;
 import com.sistema_academia.academia.entities.Exercicio;
+import com.sistema_academia.academia.entities.Plano;
 import com.sistema_academia.academia.repositories.ClienteRepository;
 import com.sistema_academia.academia.repositories.EnderecoClienteRepository;
 import com.sistema_academia.academia.repositories.ExercicioRepository;
+import com.sistema_academia.academia.repositories.PlanoRepository;
 
 public class ClienteServico {
     
@@ -21,6 +23,9 @@ public class ClienteServico {
 
     @Autowired
     private EnderecoClienteRepository enderecoRepository;
+
+    @Autowired
+    private PlanoRepository planoRepository;
 
     public Cliente cadastrarModificar(Cliente cliente){
         return clienteRepository.save(cliente);
@@ -50,6 +55,10 @@ public class ClienteServico {
 
     public List<EnderecoCliente> getEnderecos(Long id){
         return enderecoRepository.findByCliente(findById(id));
+    }
+
+    public Plano cadastrarPlano(Plano plano){
+        return planoRepository.save(plano);
     }
 
 

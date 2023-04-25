@@ -3,6 +3,7 @@ package com.sistema_academia.academia.services;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import com.sistema_academia.academia.entities.Cliente;
 import com.sistema_academia.academia.entities.EnderecoCliente;
@@ -13,6 +14,7 @@ import com.sistema_academia.academia.repositories.EnderecoClienteRepository;
 import com.sistema_academia.academia.repositories.ExercicioRepository;
 import com.sistema_academia.academia.repositories.PlanoRepository;
 
+@Service
 public class ClienteServico {
     
     @Autowired

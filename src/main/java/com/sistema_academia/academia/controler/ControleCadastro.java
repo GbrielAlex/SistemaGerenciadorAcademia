@@ -1,10 +1,13 @@
 package com.sistema_academia.academia.controler;
 
 
+import java.net.URI;
 import java.util.List;
 
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,38 +36,39 @@ public class ControleCadastro {
     private InstrutorServico instrutorServico;
 
     @PostMapping("/maquina")
-    public Maquina salvarMaquina(@RequestBody Maquina maquina){
-        return servicoMaquuina.cadastrar(maquina);
+    public ResponseEntity<Maquina> salvarMaquina(@RequestBody Maquina maquina){
+        servicoMaquuina.cadastrar(maquina);
+        return ResponseEntity.status(HttpStatus.CREATED).body(maquina);
     }
 
     @PostMapping("/maquina/list")
-    public List<Maquina> salvarVariasMaquinas(@RequestBody List<Maquina> maquinas){
-        return servicoMaquuina.CadastrarVariasMaquinas(maquinas);
+    public ResponseEntity<List<Maquina>> salvarVariasMaquinas(@RequestBody List<Maquina> maquinas){
+        return ResponseEntity.status(HttpStatus.CREATED).body(servicoMaquuina.CadastrarVariasMaquinas(maquinas));
     }
 
     @PostMapping("/cliente")
-    public Cliente salvarCliente(@RequestBody Cliente cliente){
-        return clienteServico.cadastrarModificar(cliente);
+    public ResponseEntity<Cliente> salvarCliente(@RequestBody Cliente cliente){
+        return ResponseEntity.status(HttpStatus.CREATED).body(clienteServico.cadastrarModificar(cliente));
     }
 
     @PostMapping("/exercicio")
-    public Exercicio salvarExercicio(@RequestBody Exercicio exercicio){
-        return clienteServico.criarExercicio(exercicio);
+    public ResponseEntity<Exercicio> salvarExercicio(@RequestBody Exercicio exercicio){
+        return ResponseEntity.status(HttpStatus.CREATED).body(clienteServico.criarExercicio(exercicio));
     }
 
     @PostMapping("/cliente/endereco")
-    public EnderecoCliente salvarEnderecoCliente(@RequestBody EnderecoCliente enderecoCliente){
-        return clienteServico.cadastrarEndereco(enderecoCliente);
+    public ResponseEntity<EnderecoCliente> salvarEnderecoCliente(@RequestBody EnderecoCliente enderecoCliente){
+        return ResponseEntity.status(HttpStatus.CREATED).body(clienteServico.cadastrarEndereco(enderecoCliente));
     }
     
     @PostMapping("/Instrutor/endereco")
-    public EnderecoInstrutor salvarEnderecoInstrutor(@RequestBody EnderecoInstrutor enderecoInstrutor){
-        return instrutorServico.cadastrarEndereco(enderecoInstrutor);
+    public ResponseEntity<EnderecoInstrutor> salvarEnderecoInstrutor(@RequestBody EnderecoInstrutor enderecoInstrutor){
+        return ResponseEntity.status(HttpStatus.CREATED).body(instrutorServico.cadastrarEndereco(enderecoInstrutor));
     }
     
     @PostMapping("/plano")
-    public Plano cadastrarPlano(Plano plano){
-        return clienteServico.cadastrarPlano(plano);
+    public ResponseEntity<Plano> cadastrarPlano(Plano plano){
+        return ResponseEntity.status(HttpStatus.CREATED).body(clienteServico.cadastrarPlano(plano));
     }
 
 

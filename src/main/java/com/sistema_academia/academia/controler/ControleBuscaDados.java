@@ -4,6 +4,7 @@ package com.sistema_academia.academia.controler;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -33,47 +34,43 @@ public class ControleBuscaDados {
     private InstrutorServico instrutorServico;
 
     @GetMapping("/listar_maquinas")
-    public List<Maquina> listarTodasAsMaquinas(){
-        return servicoMaquina.findAll();
+    public ResponseEntity<List<Maquina>> listarTodasAsMaquinas(){
+        return ResponseEntity.ok(servicoMaquina.findAll()) ;
     }
 
     @GetMapping("/listar_maquina/{id}")
-    public Maquina listarMaquina(@PathVariable Long id ){
-        return servicoMaquina.findById(id);
+    public ResponseEntity<Maquina> listarMaquina(@PathVariable Long id ){
+        return ResponseEntity.ok(servicoMaquina.findById(id));
     }
     
     @GetMapping("listar_Clientes")
-    public List<Cliente> listarTodoClientes(){
-        return servicoCliente.findAll();
+    public ResponseEntity<List<Cliente>> listarTodoClientes(){
+        return ResponseEntity.ok(servicoCliente.findAll());
     }
 
     @GetMapping("/listar_Cliente/{id}")
-    public Cliente listarCLiente(@PathVariable Long id ){
-        return servicoCliente.findById(id);
+    public ResponseEntity<Cliente> listarCLiente(@PathVariable Long id ){
+        return ResponseEntity.ok(servicoCliente.findById(id));
     }
 
     @GetMapping("/listar_exercicios/{cpf}")
-    public List<Exercicio> listarExercicios(@PathVariable String cpf){
-        return servicoCliente.getExercicios(cpf);
+    public ResponseEntity<List<Exercicio>> listarExercicios(@PathVariable String cpf){
+        return ResponseEntity.ok(servicoCliente.getExercicios(cpf));
     }
 
     @GetMapping("/listar_enderecos/cliente/{id}")
-    public List<EnderecoCliente> listarEnderecoCliente(@PathVariable Long id ){
-        return servicoCliente.getEnderecos(id);
+    public ResponseEntity<List<EnderecoCliente>> listarEnderecoCliente(@PathVariable Long id ){
+        return ResponseEntity.ok(servicoCliente.getEnderecos(id));
     }
 
     @GetMapping("/listar_instrutor/{id}")
-    public Instrutor listarInstrutor(@PathVariable Long id ){
-        return instrutorServico.findById(id);
+    public ResponseEntity<Instrutor> listarInstrutor(@PathVariable Long id ){
+        return ResponseEntity.ok(instrutorServico.findById(id));
     }
-
 
     @GetMapping("/listar_enderecos/instrutor/{id}")
-    public List<EnderecoInstrutor> listarEnderecoInstrutors(@PathVariable Long id ){
-        return instrutorServico.getEnderecos(id);
+    public ResponseEntity<List<EnderecoInstrutor>> listarEnderecoInstrutors(@PathVariable Long id ){
+        return ResponseEntity.ok(instrutorServico.getEnderecos(id));
     }
-
-
-
 
 }
